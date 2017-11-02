@@ -1,0 +1,6 @@
+\documentclass[class=minimal,border=0pt]{standalone}
+\usepackage{graphicx}
+\usepackage{color}
+\begin{document}
+\input{generateTexture.pdf_tex}
+\end{document}

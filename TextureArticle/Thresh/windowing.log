@@ -1,0 +1,14 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdftex 2016.4.4)  4 APR 2016 19:03
+entering extended mode
+**windowing.pdf_tex
+(C:\Plots\TextureArticle\Thresh\windowing.pdf_tex
+! Undefined control sequence.
+l.28   \makeatletter
+                    %
+? 
+! Emergency stop.
+l.28   \makeatletter
+                    %
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

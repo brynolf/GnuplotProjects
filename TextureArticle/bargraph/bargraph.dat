@@ -1,0 +1,20 @@
+"Features"				$R^2$			$Q^2$		  $R_{norm}^2$	$Q_{norm}^2$
+"Autocorrelation" 		  0.83          0.69          0.92          0.84
+"Cluster prominence"         0.91          0.84          0.84          0.76
+"Cluster shade"          0.79          0.69          0.87          0.77
+"Contrast"         0.93          0.91          0.94          0.89
+"Correlation"          0.93          0.88          0.91          0.84
+"Difference entropy"          0.97          0.94          0.94          0.91
+"Difference variance"          0.82          0.71          0.91          0.81
+"Dissimilariy"           0.93          0.88          0.91          0.84
+"Energy"          0.63          0.50          0.61          0.51
+"Entropy"           0.93          0.89          0.93          0.91
+"Homogeneity"          0.90          0.85          0.89          0.80
+"Inf. Meas. Corr1."           0.89          0.85          0.85          0.75
+"Inf. Meas. Corr2."           0.96          0.94          0.93          0.86
+"Inverse difference"           0.92          0.88          0.91          0.85
+"Max. prob."           0.63          0.50          0.63          0.53
+"Sum average"          0.94          0.91          0.82          0.79
+"Sum entropy"           0.94          0.91          0.93          0.91
+"Sum of squares"          0.89          0.79          0.91          0.82
+"Sum variance"          0.91          0.82          0.91          0.83

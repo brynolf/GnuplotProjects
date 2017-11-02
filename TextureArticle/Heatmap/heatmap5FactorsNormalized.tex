@@ -1,0 +1,310 @@
+% GNUPLOT: LaTeX picture with Postscript
+\documentclass{minimal}
+% Set font size
+\makeatletter
+\def\@ptsize{-2}
+\InputIfFileExists{size8.clo}{}{%
+   \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Gnuplot Error: File `size8.clo' not found! Could not set font size%
+   }{See the gnuplot documentation for explanation.%
+   }{For using a font size a file `size<fontsize>.clo' has to exist.
+        Falling back ^^Jto default fontsize 10pt.}%
+  \def\@ptsize{0}
+  \input{size10.clo}%
+}%
+\makeatother
+\renewcommand*\rmdefault{cmr}%
+% Load packages
+\usepackage{graphicx}
+\usepackage{color}
+\makeatletter
+% Select an appropriate default driver (from TeXLive graphics.cfg)
+\begingroup
+  \chardef\x=0 %
+  % check pdfTeX
+  \@ifundefined{pdfoutput}{}{%
+    \ifcase\pdfoutput
+    \else
+      \chardef\x=1 %
+    \fi
+  }%
+  % check VTeX
+  \@ifundefined{OpMode}{}{%
+    \chardef\x=2 %
+  }%
+\expandafter\endgroup
+\ifcase\x
+  % default case
+  \PassOptionsToPackage{dvips}{geometry}
+\or
+  % pdfTeX is running in pdf mode
+  \PassOptionsToPackage{pdftex}{geometry}
+\else
+  % VTeX is running
+  \PassOptionsToPackage{vtex}{geometry}
+\fi
+\makeatother
+% Set papersize
+\usepackage[papersize={1133.80bp,1133.80bp},text={1133.80bp,1133.80bp}]{geometry}
+% No page numbers and no paragraph indentation
+\pagestyle{empty}
+\setlength{\parindent}{0bp}%
+% Load configuration file
+\InputIfFileExists{gnuplot.cfg}{%
+  \typeout{Using configuration file gnuplot.cfg}%
+}{%
+ \typeout{No configuration file gnuplot.cfg found.}%
+}%
+%
+\begin{document}
+\begingroup
+  \makeatletter
+  \providecommand\color[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package color not loaded in conjunction with
+      terminal option `colourtext'%
+    }{See the gnuplot documentation for explanation.%
+    }{Either use 'blacktext' in gnuplot or load the package
+      color.sty in LaTeX.}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\includegraphics[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package graphicx or graphics not loaded%
+    }{See the gnuplot documentation for explanation.%
+    }{The gnuplot epslatex terminal needs graphicx.sty or graphics.sty.}%
+    \renewcommand\includegraphics[2][]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \@ifundefined{ifGPcolor}{%
+    \newif\ifGPcolor
+    \GPcolortrue
+  }{}%
+  \@ifundefined{ifGPblacktext}{%
+    \newif\ifGPblacktext
+    \GPblacktexttrue
+  }{}%
+  % define a \g@addto@macro without @ in the name:
+  \let\gplgaddtomacro\g@addto@macro
+  % define empty templates for all commands taking text:
+  \gdef\gplbacktext{}%
+  \gdef\gplfronttext{}%
+  \makeatother
+  \ifGPblacktext
+    % no textcolor at all
+    \def\colorrgb#1{}%
+    \def\colorgray#1{}%
+  \else
+    % gray or color?
+    \ifGPcolor
+      \def\colorrgb#1{\color[rgb]{#1}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color[rgb]{1,0,0}}%
+      \expandafter\def\csname LT1\endcsname{\color[rgb]{0,1,0}}%
+      \expandafter\def\csname LT2\endcsname{\color[rgb]{0,0,1}}%
+      \expandafter\def\csname LT3\endcsname{\color[rgb]{1,0,1}}%
+      \expandafter\def\csname LT4\endcsname{\color[rgb]{0,1,1}}%
+      \expandafter\def\csname LT5\endcsname{\color[rgb]{1,1,0}}%
+      \expandafter\def\csname LT6\endcsname{\color[rgb]{0,0,0}}%
+      \expandafter\def\csname LT7\endcsname{\color[rgb]{1,0.3,0}}%
+      \expandafter\def\csname LT8\endcsname{\color[rgb]{0.5,0.5,0.5}}%
+    \else
+      % gray
+      \def\colorrgb#1{\color{black}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color{black}}%
+      \expandafter\def\csname LT1\endcsname{\color{black}}%
+      \expandafter\def\csname LT2\endcsname{\color{black}}%
+      \expandafter\def\csname LT3\endcsname{\color{black}}%
+      \expandafter\def\csname LT4\endcsname{\color{black}}%
+      \expandafter\def\csname LT5\endcsname{\color{black}}%
+      \expandafter\def\csname LT6\endcsname{\color{black}}%
+      \expandafter\def\csname LT7\endcsname{\color{black}}%
+      \expandafter\def\csname LT8\endcsname{\color{black}}%
+    \fi
+  \fi
+    \setlength{\unitlength}{0.0500bp}%
+    \ifx\gptboxheight\undefined%
+      \newlength{\gptboxheight}%
+      \newlength{\gptboxwidth}%
+      \newsavebox{\gptboxtext}%
+    \fi%
+    \setlength{\fboxrule}{0.5pt}%
+    \setlength{\fboxsep}{1pt}%
+\begin{picture}(22676.00,22676.00)%
+    \gplgaddtomacro\gplbacktext{%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(7225,22435){\makebox(0,0){\strut{}MLR coefficients, Normalized Haralick features}}%
+      \csname LTb\endcsname%
+      \put(4272,21991){\makebox(0,0)[r]{\strut{}\footnotesize Resolution\phantom)}}%
+      \put(4272,21582){\makebox(0,0)[r]{\strut{}\footnotesize GLCM Size\phantom)}}%
+      \put(4272,21174){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 0,1000)}}%
+      \put(4272,20765){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 0-1000)}}%
+      \put(4272,20357){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 200,1000)}}%
+      \put(4272,19948){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 200-1000)}}%
+      \put(4272,19539){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)}}%
+      \put(4272,19131){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (AutoROI)}}%
+      \put(4272,18722){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (AutoSlice)}}%
+      \put(4272,18314){\makebox(0,0)[r]{\strut{}\footnotesize Noise\phantom)}}%
+      \put(4272,17905){\makebox(0,0)[r]{\strut{}\footnotesize (Resolution)$^2$}}%
+      \put(4272,17497){\makebox(0,0)[r]{\strut{}\footnotesize (GLCM Size)$^2$}}%
+      \put(4272,17088){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$^2$}}%
+      \put(4272,16680){\makebox(0,0)[r]{\strut{}\footnotesize (Resolution)$\times$(Freq. Res.)}}%
+      \put(4272,16271){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0,1000))$\times$(Resolution)}}%
+      \put(4272,15862){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(Resolution)}}%
+      \put(4272,15454){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200,1000))$\times$(Resolution)}}%
+      \put(4272,15045){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(Resolution)}}%
+      \put(4272,14637){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(Resolution)}}%
+      \put(4272,14228){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(Resolution)}}%
+      \put(4272,13820){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(Resolution)}}%
+      \put(4272,13411){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$\times$(Resolution)}}%
+      \put(4272,13003){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0, 1000))$\times$(GLCM Size)}}%
+      \put(4272,12594){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(GLCM Size)}}%
+      \put(4272,12186){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200, 1000))$\times$(GLCM Size)}}%
+      \put(4272,11777){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(GLCM Size)}}%
+      \put(4272,11368){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(GLCM Size)}}%
+      \put(4272,10960){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(GLCM Size)}}%
+      \put(4272,10551){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(GLCM Size)}}%
+      \put(4272,10143){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$\times$(GLCM Size)}}%
+      \put(4272,9734){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)$\times$(ADC(b: 0, 1000))}}%
+      \put(4272,9326){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 0, 1000))}}%
+      \put(4272,8917){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 0, 1000))}}%
+      \put(4272,8509){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 0-1000))}}%
+      \put(4272,8100){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 0-1000))}}%
+      \put(4272,7691){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 0-1000))}}%
+      \put(4272,7283){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 200, 1000))}}%
+      \put(4272,6874){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 200, 1000))}}%
+      \put(4272,6466){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 200, 1000))}}%
+      \put(4272,6057){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 200-1000))}}%
+      \put(4272,5649){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 200-1000))}}%
+      \put(4272,5240){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 200-1000))}}%
+      \put(4272,4832){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0, 1000))$\times$(Noise)}}%
+      \put(4272,4423){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(Noise)}}%
+      \put(4272,4014){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200, 1000))$\times$(Noise)}}%
+      \put(4272,3606){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(Noise)}}%
+      \put(4272,3197){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)$\times$(Noise)}}%
+      \put(4272,2789){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(Noise)}}%
+      \put(4272,2380){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(Noise)}}%
+      \put(4518,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Autocorrelation}}}%
+      \put(4819,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Cluster prominence}}}%
+      \put(5120,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Cluster shade}}}%
+      \put(5421,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Contrast}}}%
+      \put(5722,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Correlation}}}%
+      \put(6022,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Difference entropy}}}%
+      \put(6323,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Difference variance}}}%
+      \put(6624,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Dissimilariy}}}%
+      \put(6925,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Energy}}}%
+      \put(7226,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Entropy}}}%
+      \put(7526,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Homogeneity}}}%
+      \put(7827,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inf. Meas. Corr1.}}}%
+      \put(8128,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inf. Meas. Corr2.}}}%
+      \put(8429,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inverse difference}}}%
+      \put(8729,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Max. prob.}}}%
+      \put(9030,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum average}}}%
+      \put(9331,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum entropy}}}%
+      \put(9632,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum of squares}}}%
+      \put(9933,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum variance}}}%
+      \put(10607,3605){\makebox(0,0)[l]{\strut{}$-0.6$}}%
+      \put(10607,6465){\makebox(0,0)[l]{\strut{}$-0.4$}}%
+      \put(10607,9325){\makebox(0,0)[l]{\strut{}$-0.2$}}%
+      \put(10607,12185){\makebox(0,0)[l]{\strut{}$0$}}%
+      \put(10607,15045){\makebox(0,0)[l]{\strut{}$0.2$}}%
+      \put(10607,17905){\makebox(0,0)[l]{\strut{}$0.4$}}%
+      \put(10607,20765){\makebox(0,0)[l]{\strut{}$0.6$}}%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(18563,22435){\makebox(0,0){\strut{}MLR coefficients, Normalized Haralick features}}%
+      \csname LTb\endcsname%
+      \put(15610,21991){\makebox(0,0)[r]{\strut{}\footnotesize Resolution\phantom)}}%
+      \put(15610,21582){\makebox(0,0)[r]{\strut{}\footnotesize GLCM Size\phantom)}}%
+      \put(15610,21174){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 0,1000)}}%
+      \put(15610,20765){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 0-1000)}}%
+      \put(15610,20357){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 200,1000)}}%
+      \put(15610,19948){\makebox(0,0)[r]{\strut{}\footnotesize ADC(b: 200-1000)}}%
+      \put(15610,19539){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)}}%
+      \put(15610,19131){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (AutoROI)}}%
+      \put(15610,18722){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (AutoSlice)}}%
+      \put(15610,18314){\makebox(0,0)[r]{\strut{}\footnotesize Noise\phantom)}}%
+      \put(15610,17905){\makebox(0,0)[r]{\strut{}\footnotesize (Resolution)$^2$}}%
+      \put(15610,17497){\makebox(0,0)[r]{\strut{}\footnotesize (GLCM Size)$^2$}}%
+      \put(15610,17088){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$^2$}}%
+      \put(15610,16680){\makebox(0,0)[r]{\strut{}\footnotesize (Resolution)$\times$(Freq. Res.)}}%
+      \put(15610,16271){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0,1000))$\times$(Resolution)}}%
+      \put(15610,15862){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(Resolution)}}%
+      \put(15610,15454){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200,1000))$\times$(Resolution)}}%
+      \put(15610,15045){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(Resolution)}}%
+      \put(15610,14637){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(Resolution)}}%
+      \put(15610,14228){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(Resolution)}}%
+      \put(15610,13820){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(Resolution)}}%
+      \put(15610,13411){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$\times$(Resolution)}}%
+      \put(15610,13003){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0, 1000))$\times$(GLCM Size)}}%
+      \put(15610,12594){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(GLCM Size)}}%
+      \put(15610,12186){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200, 1000))$\times$(GLCM Size)}}%
+      \put(15610,11777){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(GLCM Size)}}%
+      \put(15610,11368){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(GLCM Size)}}%
+      \put(15610,10960){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(GLCM Size)}}%
+      \put(15610,10551){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(GLCM Size)}}%
+      \put(15610,10143){\makebox(0,0)[r]{\strut{}\footnotesize (Noise)$\times$(GLCM Size)}}%
+      \put(15610,9734){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)$\times$(ADC(b: 0, 1000))}}%
+      \put(15610,9326){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 0, 1000))}}%
+      \put(15610,8917){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 0, 1000))}}%
+      \put(15610,8509){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 0-1000))}}%
+      \put(15610,8100){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 0-1000))}}%
+      \put(15610,7691){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 0-1000))}}%
+      \put(15610,7283){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 200, 1000))}}%
+      \put(15610,6874){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 200, 1000))}}%
+      \put(15610,6466){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 200, 1000))}}%
+      \put(15610,6057){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (Manual))$\times$(ADC(b: 200-1000))}}%
+      \put(15610,5649){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(ADC(b: 200-1000))}}%
+      \put(15610,5240){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(ADC(b: 200-1000))}}%
+      \put(15610,4832){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0, 1000))$\times$(Noise)}}%
+      \put(15610,4423){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 0-1000))$\times$(Noise)}}%
+      \put(15610,4014){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200, 1000))$\times$(Noise)}}%
+      \put(15610,3606){\makebox(0,0)[r]{\strut{}\footnotesize (ADC(b: 200-1000))$\times$(Noise)}}%
+      \put(15610,3197){\makebox(0,0)[r]{\strut{}\footnotesize Thresh. (Manual)$\times$(Noise)}}%
+      \put(15610,2789){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoROI))$\times$(Noise)}}%
+      \put(15610,2380){\makebox(0,0)[r]{\strut{}\footnotesize (Thresh. (AutoSlice))$\times$(Noise)}}%
+      \put(15856,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Autocorrelation}}}%
+      \put(16157,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Cluster prominence}}}%
+      \put(16458,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Cluster shade}}}%
+      \put(16759,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Contrast}}}%
+      \put(17060,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Correlation}}}%
+      \put(17360,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Difference entropy}}}%
+      \put(17661,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Difference variance}}}%
+      \put(17962,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Dissimilariy}}}%
+      \put(18263,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Energy}}}%
+      \put(18564,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Entropy}}}%
+      \put(18864,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Homogeneity}}}%
+      \put(19165,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inf. Meas. Corr1.}}}%
+      \put(19466,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inf. Meas. Corr2.}}}%
+      \put(19767,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Inverse difference}}}%
+      \put(20067,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Max. prob.}}}%
+      \put(20368,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum average}}}%
+      \put(20669,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum entropy}}}%
+      \put(20970,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum of squares}}}%
+      \put(21271,2080){\rotatebox{90}{\makebox(0,0)[r]{\strut{}\footnotesize Sum variance}}}%
+      \put(21945,3605){\makebox(0,0)[l]{\strut{}$-0.6$}}%
+      \put(21945,6465){\makebox(0,0)[l]{\strut{}$-0.4$}}%
+      \put(21945,9325){\makebox(0,0)[l]{\strut{}$-0.2$}}%
+      \put(21945,12185){\makebox(0,0)[l]{\strut{}$0$}}%
+      \put(21945,15045){\makebox(0,0)[l]{\strut{}$0.2$}}%
+      \put(21945,17905){\makebox(0,0)[l]{\strut{}$0.4$}}%
+      \put(21945,20765){\makebox(0,0)[l]{\strut{}$0.6$}}%
+    }%
+    \gplbacktext
+    \put(0,0){\includegraphics{heatmap5FactorsNormalized-inc}}%
+    \gplfronttext
+  \end{picture}%
+\endgroup
+\end{document}

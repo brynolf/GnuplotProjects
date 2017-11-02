@@ -1,0 +1,89 @@
+%\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[a4paper,oneside,12pt]{article}
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Font and text related packages
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{lmodern} % Type1-font for non-english texts and characters
+\usepackage[ansinew]{inputenc} %Input encoding
+\usepackage{textcomp} % Add extra symbols, like \textmu \textohm
+\usepackage{microtype} % Get better spacing
+%\usepackage{setspace} % Change line spacing. 
+%\onehalfspacing % \onehalfspacing for manuscripts
+
+%% Graphics and math packages
+\usepackage{graphicx,amssymb,amstext,amsmath,array,amsfonts,amsthm} % Important graphic and math packages
+\usepackage[font={small,it},labelfont=bf]{caption} % Customize figure and table captions
+\usepackage{subfig} % Enable subfigures
+\usepackage[usenames]{color} % Must be used with epslatex from gnuplot if you want colored plots
+\usepackage[update,prepend]{epstopdf} % Allows pdfLatex to handle eps graphics
+\usepackage{booktabs} % Creates much nicer, professional tables
+\usepackage{floatrow} % Let table caption be as wide as the table
+\floatsetup[table]{style=plaintop} % Set table caption on top. Comment these two lines out if you have problems with the captions!
+\usepackage{siunitx} % Manages units. Align number by the decimal points in tables by align option S
+\usepackage{multirow} % Enable multirows in tables
+%\captionsetup[table]{format = plain, justification = raggedright}
+
+%% Layout, margins etc
+\usepackage{geometry} % Change margins
+\usepackage[parfill]{parskip} % zero parindent
+\usepackage{lscape} % Landscape pages
+\usepackage[section]{placeins} % Prevent floats to cross section or subsection ``barriers''
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{lastpage}
+\usepackage[table]{xcolor} % Color in tables
+\definecolor{lightgray}{gray}{0.95}
+
+%% References and citations
+\usepackage{cleveref} % Nice fig, eqn and table reference package
+\usepackage{cite} % Enhance the \cite command for reference	
+
+%% Setup siunitx package
+\DeclareSIUnit[number-unit-product = {}] \degree{\SIUnitSymbolDegree}
+
+% Set up the cleveref package
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
+
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+
+\crefname{figure}{Figure}{Figures}
+\Crefname{figure}{Figure}{Figures}
+\crefformat{figure}{#2Fig.~#1#3}
+\Crefformat{figure}{#2Figure~#1#3}
+
+%% My commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % vectors
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} % for vectors of Greek letters
+\renewcommand{\d}{\,\mathrm{d}} % roman d in dx for integrals
+\newcommand{\iso}[2]{\ensuremath{{}^{#1}\!\text{#2}}} % Notation for isotopes
+\newcommand{\degree}{$^{\circ}$~} % Degree sigm\begin{document}
+\newcommand{\argmin}{\operatornamewithlimits{argmin~}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax~}}
+\newcommand{\avg}[1]{\left< #1 \right>} 
+\newcommand{\diff}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\ddiff}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
+\newcommand{\etal}{\emph{et al.}}
+% Set path to figures
+\graphicspath{{figures//}} % Set figures path as a subfolder to the project named "figures"
+
+% Displaystyle in every equation
+\everymath{\displaystyle}
+
+
+\begin{document}
+\input{generateTexture.pdf_tex}
+%\input{windowing.pdf_tex}
+ %\bibliographystyle{ieeetr}
+\end{document}
+ %\bibliography{//vll.se//users//NS//PABR03//BiBTexReferences//TextureAnalysis}

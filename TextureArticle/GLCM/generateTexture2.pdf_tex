@@ -1,0 +1,122 @@
+%% Creator: Inkscape 0.91_64bit, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'generateTexture2.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{448.13262699bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.36628472)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{generateTexture2.pdf}}%
+    \put(0.38157531,0.55369579){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18754426\unitlength}\raggedright \end{minipage}}}%
+    \put(0.03426101,0.24773913){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\\ \end{minipage}}}%
+    \put(0.0338038,0.19289431){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.14230519,0.24773886){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.08740088,0.19379705){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.14387387,0.19379705){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.19903966,0.13750664){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.14282807,0.13646084){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 3\end{minipage}}}%
+    \put(0.08740088,0.13672228){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.03249655,0.13593794){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 3\end{minipage}}}%
+    \put(0.0332809,0.08024929){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 3\end{minipage}}}%
+    \put(0.08792378,0.07972637){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.14439677,0.08077218){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.19825529,0.08181796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 2\end{minipage}}}%
+    \put(-0.01159338,0.34362767){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2812946\unitlength}\centering \textbf{\small Image with numeric \small gray levels}\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{generateTexture2.pdf}}%
+    \put(0.27103978,0.34291056){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.28069358\unitlength}\centering \textbf{\small Horisontal \small GLCM}\end{minipage}}}%
+    \put(0.24976403,0.2754474){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.31775712\unitlength}\centering \scriptsize Neighbor pixel value (j)\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{generateTexture2.pdf}}%
+    \put(0.40002385,0.0893243){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09519621\unitlength}\raggedright \scriptsize 2\end{minipage}}}%
+    \put(0.34370632,0.20212248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.12058545\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0.40002385,0.20185632){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0643255\unitlength}\raggedright \scriptsize 2\end{minipage}}}%
+    \put(0.3437062,0.14585647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.10809311\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0.45528534,0.14559032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06471627\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0.4564959,0.20212248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0815193\unitlength}\raggedright \scriptsize 0\end{minipage}}}%
+    \put(0.40022987,0.14585647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09910388\unitlength}\raggedright \scriptsize 0\end{minipage}}}%
+    \put(0.4564959,0.08959045){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09050698\unitlength}\raggedright \scriptsize 0\end{minipage}}}%
+    \put(0.34275332,0.0893243){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.11473462\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{generateTexture2.pdf}}%
+    \put(0.27729054,0.30179851){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\begin{minipage}{0.04669815\unitlength}\centering \scriptsize Reference pixel value (i)\end{minipage}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{generateTexture2.pdf}}%
+    \put(0.52677959,0.27511101){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.30633778\unitlength}\centering \scriptsize Neighbor pixel value (j)\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{generateTexture2.pdf}}%
+    \put(0.72853816,0.24483456){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0764543\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0.67232368,0.24456841){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07344921\unitlength}\raggedright \scriptsize 2\end{minipage}}}%
+    \put(0.61505315,0.24456841){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.13174814\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{generateTexture2.pdf}}%
+    \put(0.57285388,0.20251386){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.11160666\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0.57385823,0.14361039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07878278\unitlength}\raggedright \scriptsize 2 \end{minipage}}}%
+    \put(0.57380653,0.08761052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08308393\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0.60069292,0.20278001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08122268\unitlength}\raggedright \scriptsize 0.25 \end{minipage}}}%
+    \put(0.65859189,0.20278042){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09441989\unitlength}\raggedright \scriptsize 0.17\end{minipage}}}%
+    \put(0.72879573,0.20278001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07920742\unitlength}\raggedright \scriptsize 0\end{minipage}}}%
+    \put(0.72879573,0.08761052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.05540824\unitlength}\raggedright \scriptsize 0\end{minipage}}}%
+    \put(0.6006923,0.08763619){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06812467\unitlength}\raggedright \scriptsize 0.08\end{minipage}}}%
+    \put(0.54579937,0.24860836){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\begin{minipage}{0.0515063\unitlength}\centering \scriptsize Reference pixel value (i)\end{minipage}}}}%
+    \put(0.65859189,0.08759326){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06580856\unitlength}\raggedright \scriptsize 0.17 \end{minipage}}}%
+    \put(0.71487125,0.14495199){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0842741\unitlength}\raggedright \scriptsize 0.08\end{minipage}}}%
+    \put(0.08740132,0.24773886){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\\ \end{minipage}}}%
+    \put(0.19775822,0.24773886){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\\ \end{minipage}}}%
+    \put(0.19775822,0.19379758){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.02007208\unitlength}\raggedright 1\\ \end{minipage}}}%
+    \put(0.80854308,0.27803606){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2294706\unitlength}\centering \small Homogeneity:\\ \end{minipage}}}%
+    \put(0.49162127,0.34398953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.38396501\unitlength}\centering \textbf{\small Normalized GLCM}\textbf{\\ }\textbf{\small p(i,j)}\end{minipage}}}%
+    \put(0.77587772,0.34499391){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.28069358\unitlength}\centering \textbf{\small Texture features}\end{minipage}}}%
+    \put(1.11044069,0.24354305){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.62025262\unitlength}\raggedright \end{minipage}}}%
+    \put(0.60069292,0.14492675){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06592321\unitlength}\raggedright \scriptsize 0.25\end{minipage}}}%
+    \put(0.67252971,0.14492623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06178302\unitlength}\raggedright \scriptsize 0 \end{minipage}}}%
+    \put(0.80854308,0.15309412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2294706\unitlength}\centering \small Contrast:\\ \end{minipage}}}%
+    \put(0.80854308,0.12021544){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21332113\unitlength}\centering \small $\displaystyle \sum_{ij}{p(i,j)\left(i-j\right)^2}$\\ \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{generateTexture2.pdf}}%
+    \put(0.34483556,0.24456627){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.13174814\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0.40002624,0.24456627){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07344921\unitlength}\raggedright \scriptsize 2\end{minipage}}}%
+    \put(0.45736551,0.24456627){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0764543\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{generateTexture2.pdf}}%
+    \put(0.30263841,0.20251504){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.11160666\unitlength}\raggedright \scriptsize 1\end{minipage}}}%
+    \put(0.3026384,0.14361217){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07878278\unitlength}\raggedright \scriptsize 2 \end{minipage}}}%
+    \put(0.30263839,0.08761113){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08308393\unitlength}\raggedright \scriptsize 3\end{minipage}}}%
+    \put(0.81018391,0.23511572){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21332113\unitlength}\centering \small $\displaystyle \sum_{ij}{\frac{p(i,j)}{1+\left(i-j\right)^2}}$\\ \end{minipage}}}%
+  \end{picture}%
+\endgroup%

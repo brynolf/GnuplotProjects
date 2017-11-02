@@ -1,0 +1,30 @@
+% Loop over all data sets
+for dataset = {'original_coefficients','Coefficients_normalized'}
+    [~,~,a] = xlsread(fullfile('C:\Plots\TextureArticle\Heatmap','results_designs.xlsx'),dataset{1});
+    
+    variables = a(1,1:5:end);
+    params = a(3:end,1);
+    
+    % Add gnuplot specific labels
+    for i = 1:numel(params)
+        params{i} = sprintf(' ''%s'' %i,\\ ', params{i},i-1);
+    end
+    
+    % Remove euclidian distance'
+    variables(end) = [];
+    for i = 1:numel(variables)
+        variables{i}(end-10:end) = [];
+    end
+    
+    % Initialize map variable
+    map = zeros(numel(params),numel(variables));
+    
+    for i = 1:numel(variables)
+        map(:,i) = cell2mat(a(3:end,3+5*(i-1)));
+    end
+    
+    % Save data
+    fid = fopen(sprintf(fullfile('C:\\Plots\TextureArticle\\Heatmap','heatmap_%s.bin'),dataset{1}),'w');
+    fwrite(fid,map,'double');
+    fclose(fid);
+end

@@ -1,0 +1,265 @@
+% GNUPLOT: LaTeX picture with Postscript
+\documentclass{minimal}
+% Set font size
+\makeatletter
+\def\@ptsize{-2}
+\InputIfFileExists{size8.clo}{}{%
+   \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Gnuplot Error: File `size8.clo' not found! Could not set font size%
+   }{See the gnuplot documentation for explanation.%
+   }{For using a font size a file `size<fontsize>.clo' has to exist.
+        Falling back ^^Jto default fontsize 10pt.}%
+  \def\@ptsize{0}
+  \input{size10.clo}%
+}%
+\makeatother
+\renewcommand*\rmdefault{cmr}%
+% Load packages
+\usepackage{graphicx}
+\usepackage{color}
+\makeatletter
+% Select an appropriate default driver (from TeXLive graphics.cfg)
+\begingroup
+  \chardef\x=0 %
+  % check pdfTeX
+  \@ifundefined{pdfoutput}{}{%
+    \ifcase\pdfoutput
+    \else
+      \chardef\x=1 %
+    \fi
+  }%
+  % check VTeX
+  \@ifundefined{OpMode}{}{%
+    \chardef\x=2 %
+  }%
+\expandafter\endgroup
+\ifcase\x
+  % default case
+  \PassOptionsToPackage{dvips}{geometry}
+\or
+  % pdfTeX is running in pdf mode
+  \PassOptionsToPackage{pdftex}{geometry}
+\else
+  % VTeX is running
+  \PassOptionsToPackage{vtex}{geometry}
+\fi
+\makeatother
+% Set papersize
+\usepackage[papersize={425.10bp,425.10bp},text={425.10bp,425.10bp}]{geometry}
+% No page numbers and no paragraph indentation
+\pagestyle{empty}
+\setlength{\parindent}{0bp}%
+% Load configuration file
+\InputIfFileExists{gnuplot.cfg}{%
+  \typeout{Using configuration file gnuplot.cfg}%
+}{%
+ \typeout{No configuration file gnuplot.cfg found.}%
+}%
+%
+\begin{document}
+\begingroup
+  \makeatletter
+  \providecommand\color[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package color not loaded in conjunction with
+      terminal option `colourtext'%
+    }{See the gnuplot documentation for explanation.%
+    }{Either use 'blacktext' in gnuplot or load the package
+      color.sty in LaTeX.}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\includegraphics[2][]{%
+    \GenericError{(gnuplot) \space\space\space\@spaces}{%
+      Package graphicx or graphics not loaded%
+    }{See the gnuplot documentation for explanation.%
+    }{The gnuplot epslatex terminal needs graphicx.sty or graphics.sty.}%
+    \renewcommand\includegraphics[2][]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \@ifundefined{ifGPcolor}{%
+    \newif\ifGPcolor
+    \GPcolortrue
+  }{}%
+  \@ifundefined{ifGPblacktext}{%
+    \newif\ifGPblacktext
+    \GPblacktexttrue
+  }{}%
+  % define a \g@addto@macro without @ in the name:
+  \let\gplgaddtomacro\g@addto@macro
+  % define empty templates for all commands taking text:
+  \gdef\gplbacktext{}%
+  \gdef\gplfronttext{}%
+  \makeatother
+  \ifGPblacktext
+    % no textcolor at all
+    \def\colorrgb#1{}%
+    \def\colorgray#1{}%
+  \else
+    % gray or color?
+    \ifGPcolor
+      \def\colorrgb#1{\color[rgb]{#1}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color[rgb]{1,0,0}}%
+      \expandafter\def\csname LT1\endcsname{\color[rgb]{0,1,0}}%
+      \expandafter\def\csname LT2\endcsname{\color[rgb]{0,0,1}}%
+      \expandafter\def\csname LT3\endcsname{\color[rgb]{1,0,1}}%
+      \expandafter\def\csname LT4\endcsname{\color[rgb]{0,1,1}}%
+      \expandafter\def\csname LT5\endcsname{\color[rgb]{1,1,0}}%
+      \expandafter\def\csname LT6\endcsname{\color[rgb]{0,0,0}}%
+      \expandafter\def\csname LT7\endcsname{\color[rgb]{1,0.3,0}}%
+      \expandafter\def\csname LT8\endcsname{\color[rgb]{0.5,0.5,0.5}}%
+    \else
+      % gray
+      \def\colorrgb#1{\color{black}}%
+      \def\colorgray#1{\color[gray]{#1}}%
+      \expandafter\def\csname LTw\endcsname{\color{white}}%
+      \expandafter\def\csname LTb\endcsname{\color{black}}%
+      \expandafter\def\csname LTa\endcsname{\color{black}}%
+      \expandafter\def\csname LT0\endcsname{\color{black}}%
+      \expandafter\def\csname LT1\endcsname{\color{black}}%
+      \expandafter\def\csname LT2\endcsname{\color{black}}%
+      \expandafter\def\csname LT3\endcsname{\color{black}}%
+      \expandafter\def\csname LT4\endcsname{\color{black}}%
+      \expandafter\def\csname LT5\endcsname{\color{black}}%
+      \expandafter\def\csname LT6\endcsname{\color{black}}%
+      \expandafter\def\csname LT7\endcsname{\color{black}}%
+      \expandafter\def\csname LT8\endcsname{\color{black}}%
+    \fi
+  \fi
+    \setlength{\unitlength}{0.0500bp}%
+    \ifx\gptboxheight\undefined%
+      \newlength{\gptboxheight}%
+      \newlength{\gptboxwidth}%
+      \newsavebox{\gptboxtext}%
+    \fi%
+    \setlength{\fboxrule}{0.5pt}%
+    \setlength{\fboxsep}{1pt}%
+\begin{picture}(8502.00,8502.00)%
+    \gplgaddtomacro\gplbacktext{%
+      \csname LTb\endcsname%
+      \put(669,4718){\makebox(0,0)[r]{\strut{}\large{10$^{-4}$}}}%
+      \put(669,5138){\makebox(0,0)[r]{\strut{}\large{10$^{-3}$}}}%
+      \put(669,5557){\makebox(0,0)[r]{\strut{}\large{10$^{-2}$}}}%
+      \put(669,5977){\makebox(0,0)[r]{\strut{}\large{10$^{-1}$}}}%
+      \put(669,6397){\makebox(0,0)[r]{\strut{}\large{10$^{0}$}}}%
+      \put(669,6816){\makebox(0,0)[r]{\strut{}\large{10$^{1}$}}}%
+      \put(669,7236){\makebox(0,0)[r]{\strut{}\large{10$^{2}$}}}%
+      \put(669,7655){\makebox(0,0)[r]{\strut{}\large{10$^{3}$}}}%
+      \put(669,8075){\makebox(0,0)[r]{\strut{}\large{10$^{4}$}}}%
+      \put(1201,4558){\makebox(0,0){\strut{}$16$}}%
+      \put(1636,4558){\makebox(0,0){\strut{}$32$}}%
+      \put(2072,4558){\makebox(0,0){\strut{}$48$}}%
+      \put(2508,4558){\makebox(0,0){\strut{}$64$}}%
+      \put(2943,4558){\makebox(0,0){\strut{}$80$}}%
+      \put(3379,4558){\makebox(0,0){\strut{}$96$}}%
+      \put(3814,4558){\makebox(0,0){\strut{}$112$}}%
+      \put(4250,4558){\makebox(0,0){\strut{}$128$}}%
+      \put(1114,5054){\makebox(0,0)[l]{\strut{}\huge{a}}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(2507,4318){\makebox(0,0){\strut{}\Large{Gray levels (N)}}}%
+      \put(2507,8203){\makebox(0,0){\strut{}\huge{Original features values}}}%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \csname LTb\endcsname%
+      \put(4857,4558){\makebox(0,0){\strut{}$16$}}%
+      \put(5292,4558){\makebox(0,0){\strut{}$32$}}%
+      \put(5728,4558){\makebox(0,0){\strut{}$48$}}%
+      \put(6163,4558){\makebox(0,0){\strut{}$64$}}%
+      \put(6599,4558){\makebox(0,0){\strut{}$80$}}%
+      \put(7034,4558){\makebox(0,0){\strut{}$96$}}%
+      \put(7470,4558){\makebox(0,0){\strut{}$112$}}%
+      \put(7905,4558){\makebox(0,0){\strut{}$128$}}%
+      \put(8001,4718){\makebox(0,0)[l]{\strut{}\large{10$^{-4}$}}}%
+      \put(8001,5091){\makebox(0,0)[l]{\strut{}\large{10$^{-3}$}}}%
+      \put(8001,5464){\makebox(0,0)[l]{\strut{}\large{10$^{-2}$}}}%
+      \put(8001,5837){\makebox(0,0)[l]{\strut{}\large{10$^{-1}$}}}%
+      \put(8001,6210){\makebox(0,0)[l]{\strut{}\large{10$^{0}$}}}%
+      \put(8001,6583){\makebox(0,0)[l]{\strut{}\large{10$^{1}$}}}%
+      \put(8001,6956){\makebox(0,0)[l]{\strut{}\large{10$^{2}$}}}%
+      \put(8001,7329){\makebox(0,0)[l]{\strut{}\large{10$^{3}$}}}%
+      \put(8001,7702){\makebox(0,0)[l]{\strut{}\large{10$^{4}$}}}%
+      \put(8001,8075){\makebox(0,0)[l]{\strut{}\large{10$^{5}$}}}%
+      \put(4769,5054){\makebox(0,0)[l]{\strut{}\huge{b}}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(6163,4318){\makebox(0,0){\strut{}\Large{Gray levels (N)}}}%
+      \put(6163,8203){\makebox(0,0){\strut{}\huge{Invariant features values}}}%
+      \csname LTb\endcsname%
+      \put(6279,7747){\makebox(0,0)[l]{\strut{}Contrast}}%
+      \csname LTb\endcsname%
+      \put(6279,7587){\makebox(0,0)[l]{\strut{}Homogeneity}}%
+      \csname LTb\endcsname%
+      \put(6279,7427){\makebox(0,0)[l]{\strut{}Energy}}%
+      \csname LTb\endcsname%
+      \put(6279,7267){\makebox(0,0)[l]{\strut{}AutoCorrelation}}%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \csname LTb\endcsname%
+      \put(669,3762){\makebox(0,0)[r]{\strut{}\large{8}}}%
+      \put(669,3133){\makebox(0,0)[r]{\strut{}\large{32}}}%
+      \put(669,2293){\makebox(0,0)[r]{\strut{}\large{64}}}%
+      \put(669,1454){\makebox(0,0)[r]{\strut{}\large{96}}}%
+      \put(669,615){\makebox(0,0)[r]{\strut{}\large{128}}}%
+      \put(970,350){\makebox(0,0)[r]{\strut{}\large{8}}}%
+      \put(1623,350){\makebox(0,0)[r]{\strut{}\large{32}}}%
+      \put(2495,350){\makebox(0,0)[r]{\strut{}\large{64}}}%
+      \put(3366,350){\makebox(0,0)[r]{\strut{}\large{96}}}%
+      \put(4237,350){\makebox(0,0)[r]{\strut{}\large{128}}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(205,2188){\rotatebox{-270}{\makebox(0,0){\strut{}\large{Training dataset gray levels (N)}}}}%
+      \put(2507,110){\makebox(0,0){\strut{}\Large{Test dataset gray levels (N)}}}%
+      \put(2507,3995){\makebox(0,0){\strut{}\Large{Tissue classification, original features}}}%
+      \csname LTb\endcsname%
+      \put(1114,846){\makebox(0,0)[l]{\strut{}\huge{c}}}%
+    }%
+    \gplgaddtomacro\gplbacktext{%
+      \csname LTb\endcsname%
+      \put(4325,3762){\makebox(0,0){\strut{} }}%
+      \put(4325,3552){\makebox(0,0){\strut{} }}%
+      \put(4325,3342){\makebox(0,0){\strut{} }}%
+      \put(4325,3133){\makebox(0,0){\strut{} }}%
+      \put(4325,2923){\makebox(0,0){\strut{} }}%
+      \put(4325,2713){\makebox(0,0){\strut{} }}%
+      \put(4325,2503){\makebox(0,0){\strut{} }}%
+      \put(4325,2293){\makebox(0,0){\strut{} }}%
+      \put(4325,2084){\makebox(0,0){\strut{} }}%
+      \put(4325,1874){\makebox(0,0){\strut{} }}%
+      \put(4325,1664){\makebox(0,0){\strut{} }}%
+      \put(4325,1454){\makebox(0,0){\strut{} }}%
+      \put(4325,1244){\makebox(0,0){\strut{} }}%
+      \put(4325,1035){\makebox(0,0){\strut{} }}%
+      \put(4325,825){\makebox(0,0){\strut{} }}%
+      \put(4325,615){\makebox(0,0){\strut{} }}%
+      \put(4626,350){\makebox(0,0)[r]{\strut{}\large{8}}}%
+      \put(5279,350){\makebox(0,0)[r]{\strut{}\large{32}}}%
+      \put(6150,350){\makebox(0,0)[r]{\strut{}\large{64}}}%
+      \put(7021,350){\makebox(0,0)[r]{\strut{}\large{96}}}%
+      \put(7892,350){\makebox(0,0)[r]{\strut{}\large{128}}}%
+    }%
+    \gplgaddtomacro\gplfronttext{%
+      \csname LTb\endcsname%
+      \put(6163,110){\makebox(0,0){\strut{}\Large{Test dataset gray levels (N)}}}%
+      \put(6259,3995){\makebox(0,0){\strut{}\Large{Tissue classification, invariant features}}}%
+      \csname LTb\endcsname%
+      \put(8257,510){\makebox(0,0)[l]{\strut{}$0.5$}}%
+      \put(8257,1181){\makebox(0,0)[l]{\strut{}$0.6$}}%
+      \put(8257,1852){\makebox(0,0)[l]{\strut{}$0.7$}}%
+      \put(8257,2524){\makebox(0,0)[l]{\strut{}$0.8$}}%
+      \put(8257,3195){\makebox(0,0)[l]{\strut{}$0.9$}}%
+      \put(8257,3866){\makebox(0,0)[l]{\strut{}$1$}}%
+      \put(4769,846){\makebox(0,0)[l]{\strut{}\huge{d}}}%
+    }%
+    \gplbacktext
+    \put(0,0){\includegraphics{heatmapsAndCurves-inc}}%
+    \gplfronttext
+  \end{picture}%
+\endgroup
+\end{document}
