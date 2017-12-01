@@ -26,20 +26,21 @@ set xtics (  '\normalsize{8\phantom{1}}' 8,\
 	'\normalsize{224}' 224,\
 	'\normalsize{256}' 256)
 
-styles = 'lt 1 lw 2 ps 1 lc rgb "#000000"'
+styles1 = 'lt 1 lw 2 ps 1.5 lc rgb "#000000"'
+styles2 = 'lt 1 lw 2 ps 1 lc rgb "#000000"'
 set xrange [0:264]
 set yrange [0.45:1]
 
 set ylabel 'Classification Accuracy' offset 1,0
-set xlabel 'Quantization gray levels'
+set xlabel 'Test Data Quantization gray levels'
 set key at graph 0.96,0.1 Left bottom invert width -5 samplen 2
 set title 'MRI Brain data' offset 0,-.5
 set lmargin at screen lMargin
 set rmargin at screen lMargin+graphWidth
 set bmargin at screen bMargin
 set tmargin at screen 1-tMargin
-plot 'TestIBrainOrig.csv' using 1:2:3 with errorbars @styles pt 7 t 'Original Features',\
-	'TestIBrainInv.csv' using 1:2:3 with errorbars @styles pt 5 t 'Invariant Features'
+plot 'TestIBrainOrig.csv' using 1:2:3 with errorbars @styles1 pt 9 t 'Original Features',\
+	'TestIBrainInv.csv' using 1:2:3 with errorbars @styles2 pt 5 t 'Invariant Features'
 	
 set key at graph 0.96,0.8 Left bottom invert width -5 samplen 2
 set title 'Gland data'
@@ -49,5 +50,5 @@ set lmargin at screen lMargin+graphWidth + mMargin
 set rmargin at screen 1-rMargin
 set bmargin at screen bMargin
 set tmargin at screen 1-tMargin
-plot 'TestICellOrig.csv' using 1:2:3 with errorbars @styles pt 7 t 'Original Features',\
-	'TestICellInv.csv' using 1:2:3 with errorbars @styles pt 5 t 'Invariant Features'
+plot 'TestICellOrig.csv' using 1:2:3 with errorbars @styles1 pt 9 t 'Original Features',\
+	'TestICellInv.csv' using 1:2:3 with errorbars @styles2 pt 5 t 'Invariant Features'
