@@ -1,5 +1,5 @@
 reset
-set terminal epslatex standalone color size 15cm, 9cm header \
+set terminal epslatex standalone color size 15cm, 8.5cm header \
 "\\usepackage[bitstream-charter]{mathdesign}"
 set output 'TestIAccuracyBrain.tex'
 
