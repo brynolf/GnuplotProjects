@@ -1,6 +1,6 @@
 ## Define positions of the graphs
 
-topMargin = 0.1
+topMargin = 0.12
 heatmapMargin = 0.1
 bottomMargin = 0.1
 leftMargin = 0.15

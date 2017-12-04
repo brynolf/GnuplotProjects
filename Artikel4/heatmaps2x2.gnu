@@ -46,14 +46,16 @@ set cbrange [.5:1]
 set xrange [ -0.5 : 31.5 ] reverse nowriteback
 set yrange [ 31.5 : -0.5 ] reverse 
 
+set label 5 'Classification Accuracy' at screen 0.35,0.965
+
 ## Plot first heatmap
-set title 'Classification accuracy' offset 9,-.5
+set title '\scriptsize{Original Features}' offset 0,-.7
 ## unset xtics
 set xtics (0,3,7,11,15,19,23,27,31) format " "
 set tics front
 unset ylabel
-set ylabel '\small{MRI Brain region dataset}' offset 0.8,1
-set label 1 '\scriptsize{Test dataset gray levels}' at screen 0.065,0.565 rotate by 90
+set ylabel '\small{MRI Brain region dataset}' offset 0.8,0.5
+set label 1 '\scriptsize{Test dataset gray levels}' at screen 0.065,0.54 rotate by 90
 set lmargin at screen leftMargin
 set rmargin at screen leftMargin + heatmapWidth
 set tmargin at screen bottomMargin + 2*heatmapHeight + midVertHeatmapMargin
@@ -65,8 +67,9 @@ plot 'origDataBrainAll.csv'  matrix  with image pixels notitle
 
 ## Plot Second heatmap
 ## Define positions of the graphs
-unset title
+set title '\scriptsize{Invariant Features}' offset 0,-.7
 unset label 1
+unset label 5
 ## set title 'Classification success' offset 0,-.5
 unset ylabel  
 unset xlabel
@@ -79,8 +82,8 @@ plot 'invDataBrainAll.csv' matrix with image pixels notitle
 unset title
 load 'heatmapAxesLabels2x2X.gnu'
 load 'heatmapAxesLabels2x2Y.gnu'
-set ylabel '\small{H\&E stained gland dataset}' offset 0.8,0
-set label 1 '\scriptsize{Test dataset gray levels}' at screen 0.065,0.145 rotate by 90
+set ylabel '\small{H\&E stained gland dataset}' offset 0.8,-.8
+set label 1 '\scriptsize{Test dataset gray levels}' at screen 0.065,0.125 rotate by 90
 set xlabel '\scriptsize{Training dataset gray levels}' offset 0,.8
 set lmargin at screen leftMargin
 set rmargin at screen leftMargin + heatmapWidth
