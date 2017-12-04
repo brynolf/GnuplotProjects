@@ -1,5 +1,5 @@
 reset
-set terminal epslatex standalone color size 15cm, 8cm header \
+set terminal epslatex standalone color size 15cm, 9cm header \
 "\\usepackage[bitstream-charter]{mathdesign}"
 set output 'TestIAccuracyBrain.tex'
 
@@ -10,7 +10,7 @@ set multiplot
 lMargin = 0.1
 rMargin = 0.02
 mMargin = 0.02
-tMargin = 0.1
+tMargin = 0.2
 bMargin = 0.15
 
 graphWidth = (1-lMargin-rMargin-mMargin)/2
@@ -30,6 +30,8 @@ styles1 = 'lt 1 lw 2 ps 1.5 lc rgb "#000000"'
 styles2 = 'lt 1 lw 2 ps 1 lc rgb "#000000"'
 set xrange [0:264]
 set yrange [0.45:1]
+
+set label 1 '\Large{Classifiers trained on multiple quantizations}' at screen 0.215,0.93
 
 set ylabel 'Classification Accuracy' offset 1,0
 set xlabel 'Test Data Quantization gray levels'

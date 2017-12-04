@@ -12,4 +12,4 @@ set xtics rotate by 0 offset character 0,0 \
 	'\scriptsize{160}' 19,\
 	'\scriptsize{192}' 23,\
 	'\scriptsize{224}' 27,\
-	'\scriptsize{256}' 31)
+	'\scriptsize{256}' 31) offset 0,.3
