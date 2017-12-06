@@ -46,7 +46,7 @@ set cbrange [.5:1]
 set xrange [ -0.5 : 31.5 ] reverse nowriteback
 set yrange [ 31.5 : -0.5 ] reverse 
 
-set label 5 'Classification Accuracy' at screen 0.35,0.965
+set label 5 'Classifiers trained on one quantization' at screen 0.245,0.965
 
 ## Plot first heatmap
 set title '\scriptsize{Original Features}' offset 0,-.7
