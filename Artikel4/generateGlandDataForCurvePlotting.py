@@ -9,13 +9,13 @@ import pandas as pd
 import sqlite3 as sql
 import matplotlib.pyplot as plt
 
-sourceDataPath = 'C:\\GnuplotProjects\\Artikel4\\GlandData\\results32GLDither.db'
+sourceDataPath = 'C:\\GnuplotProjects\\Artikel4\\GlandData\\results32GLDitherNewMaxProb.db'
 
 # Connect to database
 conn = sql.connect(sourceDataPath)
 
 # Read one row of data
-a = pd.read_sql_query('Select * from InvariantFeatures LIMIT 1',conn)
+a = pd.read_sql_query('Select * from InvariantFeaturesK LIMIT 1',conn)
 
 # Get column names
 featureNames = a.columns[-21:]
@@ -24,16 +24,31 @@ featureNames = a.columns[-21:]
 for feature in featureNames:
     
     # Find all unique pairs of patient number and exam number
-    c = pd.read_sql_query('select PatientNumber,Examnumber from InvariantFeatures where BrainRegion like "Cerebellum"',conn)
-    d = c.drop_duplicates()
+    c = pd.read_sql_query('select FileName,RegionNumber,PixelsInRegion from InvariantFeaturesK where TumorGrade like "benign"',conn)
+    dd = c.drop_duplicates()
+    # Select the largest region
+    d = dd.sort_values(by='PixelsInRegion',ascending=False).iloc[0:1]
     plt.figure()
-    for patnum,examnum in d.values:
+    # Interactive plotting on!
+    plt.ion()
+
+    for fileName,regionNumber,PixelsInRegion in d.values:
         # Select values for the feature
-        b = pd.read_sql_query('''select BitDepth,{0} from InvariantFeatures where 
-                              BrainRegion like "{1}" and PatientNumber = {2} and 
-                              Examnumber = {3} order by PatientNumber, 
-                              ExamNumber,BitDepth'''.format(feature,'FrontalCortex',
-                              patnum,examnum)
+        b = pd.read_sql_query('''select BitDepth,{0} from InvariantFeaturesK where 
+                              TumorGrade like "{1}" and FileName like "{2}" and 
+                              RegionNumber = {3} order by FileName, 
+                              RegionNumber,BitDepth'''.format(feature,'benign',
+                              fileName,regionNumber)
                               ,conn)
-        plt.plot(b.BitDepth,b[feature],'o-')
-        plt.title(feature)
+        b.to_csv('{0}_{1}.csv'.format(feature,'InvariantGland'),header=False,index=False)
+        
+        c = pd.read_sql_query('''select BitDepth,{0} from OriginalFeaturesK where 
+                              TumorGrade like "{1}" and FileName like "{2}" and 
+                              RegionNumber = {3} order by FileName, 
+                              RegionNumber,BitDepth'''.format(feature,'benign',
+                              fileName,regionNumber)
+                              ,conn)
+        c.to_csv('{0}_{1}.csv'.format(feature,'OriginalGland'),header=False,index=False)
+        
+#        plt.plot(b.BitDepth,b[feature],'o-')
+#        plt.title(feature)
