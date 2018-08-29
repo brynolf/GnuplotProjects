@@ -5,7 +5,7 @@ set output 'TestIAccuracy.tex'
 
 set datafile separator ","
 set multiplot 
-
+set macros
 
 lMargin = 0.1
 rMargin = 0.02

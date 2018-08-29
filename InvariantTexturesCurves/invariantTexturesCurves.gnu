@@ -6,7 +6,7 @@ set logscale y
 
 set multiplot 
 
-load 'moreland.pal'
+## load 'moreland.pal'
 ## load 'ylorrd.pal'
 
 ## Set macros
