@@ -28,12 +28,11 @@ unset y2tics
   ## '120' 14,\
   
 set cbtics rotate by 0 offset character -0.6,0 \
-(  '\scriptsize{0.5}' 0.5,\
-	'\scriptsize{0.6}' .6,\
-	'\scriptsize{0.7}' .7,\
-	'\scriptsize{0.8}' .8,\
-	'\scriptsize{0.9}' .9,\
-	'\scriptsize{1.0}' 1)
+(  '\scriptsize{0.62}' 0.615,\
+	'\scriptsize{0.65}' .65,\
+	'\scriptsize{0.70}' .7,\
+	'\scriptsize{0.75}' .75,\
+	'\scriptsize{0.80}' .8)
 ## (  '8' 0,\
   ## '16' 1,\
   ## '24' 2,\

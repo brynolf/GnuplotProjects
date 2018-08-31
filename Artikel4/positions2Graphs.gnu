@@ -10,7 +10,7 @@ hm_cbMargin = .01
 cbWidth = 0.03
 midVertHeatmapMargin = midHorizHeatmapMargin*(11.0/9.0)
 ## graphHMSeparation = 0.1
-cbPosition = 1-cbWidth-0.05
+cbPosition = 1-cbWidth-0.06
 
 heatmapWidth  = (1 - leftMargin - midHorizHeatmapMargin - rightMargin)*1/2
 heatmapHeight = (1 - topMargin - midVertHeatmapMargin - bottomMargin)*1/2

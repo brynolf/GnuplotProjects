@@ -6,7 +6,7 @@ set output 'heatmaps2x2.tex'
 ## Set multiplot
 set multiplot 
 
-load 'rdgy.pal'
+## load 'rdgy.pal'
 
 ## set palette defined ( 0 '#0a00ff',\
     	    	      ## 1 '#00ffff',\
@@ -30,8 +30,8 @@ unset y2tics
 set ytics mirror
 unset mytics
 unset my2tics
-## Load moreland.pal
-load 'ylorrd.pal'
+load 'paletteBrain.pal'
+## load 'ylorrd.pal'
 unset logscale y
 unset logscale y2
 unset label 1
@@ -40,7 +40,8 @@ unset label 3
 unset label 4
 
 ## Set range of colorbar
-set cbrange [.5:1]
+set cbrange [0.4132:1]
+## set cbrange [0.4:1]
 
 ## Set ranges
 set xrange [ -0.5 : 31.5 ] reverse nowriteback
@@ -65,6 +66,10 @@ unset colorbox
 load 'heatmapAxesLabels2x2Y.gnu'
 plot 'origDataBrainAll.csv'  matrix  with image pixels notitle
 
+## Plot Colorbar
+load 'heatmapAxesLabelsCBBrain.gnu'
+set colorbox user size cbWidth,heatmapHeight origin screen cbPosition,bottomMargin + heatmapHeight + midVertHeatmapMargin
+
 ## Plot Second heatmap
 ## Define positions of the graphs
 set title '\scriptsize{Invariant Features}' offset 0,-.7
@@ -77,7 +82,11 @@ set ytics (0,4,8,12,16,20,24,28,31) format " "
 set lmargin at screen leftMargin + heatmapWidth + midHorizHeatmapMargin
 set rmargin at screen leftMargin + 2*heatmapWidth + midHorizHeatmapMargin
 plot 'invDataBrainAll.csv' matrix with image pixels notitle
-	
+
+## Set range of colorbar
+load 'paletteGland.pal'
+set cbrange [0.58:.8]	
+
 ## Plot Third heatmap
 unset title
 load 'heatmapAxesLabels2x2X.gnu'
@@ -92,6 +101,10 @@ set bmargin at screen bottomMargin
 unset colorbox 
 plot 'origDataCell.csv'  matrix  with image pixels notitle
 
+## Plot Colorbar
+load 'heatmapAxesLabelsCBGland.gnu'
+set colorbox user size cbWidth,heatmapHeight origin screen cbPosition,bottomMargin
+
 ## Plot Fourth heatmap
 ## Define positions of the graphs
 unset ylabel  
@@ -99,6 +112,4 @@ set lmargin at screen leftMargin + heatmapWidth + midHorizHeatmapMargin
 set rmargin at screen leftMargin + 2*heatmapWidth + midHorizHeatmapMargin
 unset ylabel
 set ytics (0,4,8,12,16,20,24,28,31) format " "
-load 'heatmapAxesLabelsCB.gnu'
-set colorbox user size cbWidth,2*heatmapHeight+midVertHeatmapMargin origin screen cbPosition,bottomMargin
 plot 'invDataCell.csv' matrix with image pixels notitle

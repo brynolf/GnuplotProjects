@@ -41,9 +41,11 @@ set lmargin at screen lMargin
 set rmargin at screen lMargin+graphWidth
 set bmargin at screen bMargin
 set tmargin at screen 1-tMargin
+set arrow 1 from 0, 0.5 to 264,0.5 dt 6 lc rgb "#000000" nohead
 plot 'TestIBrainOrig.csv' using 1:2:3 with errorbars @styles1 pt 9 t 'Original Features',\
 	'TestIBrainInv.csv' using 1:2:3 with errorbars @styles2 pt 5 t 'Invariant Features'
-	
+
+unset arrow 1
 set key at graph 0.96,0.8 Left bottom invert width -5 samplen 2
 set title 'Gland data'
 unset ylabel
@@ -52,5 +54,6 @@ set lmargin at screen lMargin+graphWidth + mMargin
 set rmargin at screen 1-rMargin
 set bmargin at screen bMargin
 set tmargin at screen 1-tMargin
+set arrow 2 from 0, 0.615 to 264,0.615 dt 6 lc rgb "#000000" nohead
 plot 'TestICellOrig.csv' using 1:2:3 with errorbars @styles1 pt 9 t 'Original Features',\
 	'TestICellInv.csv' using 1:2:3 with errorbars @styles2 pt 5 t 'Invariant Features'
