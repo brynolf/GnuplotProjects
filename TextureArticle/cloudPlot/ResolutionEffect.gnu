@@ -1,5 +1,5 @@
 reset
-set terminal epslatex standalone color size 18cm, 10cm font "cmr,8" 
+set terminal epslatex standalone color size 24cm, 10cm font "cmr,8" 
 set output 'ResolutionEffect.tex'
 set datafile separator ","
 set multiplot layout 3,3
